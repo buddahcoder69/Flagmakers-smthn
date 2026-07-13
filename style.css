@@ -6,3 +6,39 @@
 .mainflag {
     width: 30%;
 }
+.topbar {
+    top: 0px;
+    position: sticky;
+    background-color: grey;
+}
+.topbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Pushes it exactly below your element */
+    width: 100%;
+    height: 10px; /* Your 100px border thickness */
+    
+    /* We match the RGB channels exactly so it only fades the alpha channel */
+    background: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(128,128,128,0));
+    
+    pointer-events: none; /* Prevents it from blocking clicks */
+}
+.topbarflag {
+    height: 100px;
+}
+.bodytext {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+}
+.coolbutton {
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    border: 4px solid greenyellow;
+    border-radius: 4px;
+    width: 200px;
+    text-align: center;
+    margin-left: 50%;
+}
