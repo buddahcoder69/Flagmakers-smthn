@@ -25,5 +25,5 @@
     pointer-events: none; /* Prevents it from blocking clicks */
 }
 .topbarflag {
-    height: 50px;
+    height: 100px;
 }
