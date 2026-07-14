@@ -28,6 +28,7 @@
 }
 .topbarflag {
     height: 100px;
+    margin-right: 60%;
 }
 .bodytext {
     color: white;
@@ -44,4 +45,24 @@
     text-align: center;
     display: block;
     margin: 0 auto;
+}
+.signupbutton,
+.loginbutton {
+    display: inline-block;
+    vertical-align: 120%;
+    border: 4px;
+    border-color: greenyellow;
+    background-color: greenyellow;
+    border-radius: 40px;
+    width: 160px;
+    height: 60px;
+    font-size: 30px;
+    font-style: bold;
+    border-style: solid;
+}
+.signupbutton:hover,
+.loginbutton:hover {
+    cursor: pointer;
+    background-color: aqua;
+    transition: background-color 0.4s;
 }
