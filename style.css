@@ -5,6 +5,8 @@
 }
 .mainflag {
     width: 30%;
+    display: block;
+    margin: 0 auto;
 }
 .topbar {
     top: 0px;
@@ -40,5 +42,6 @@
     border-radius: 4px;
     width: 200px;
     text-align: center;
-    margin-left: 50%;
+    display: block;
+    margin: 0 auto;
 }
