@@ -1,10 +1,20 @@
-const submitbutton = document.querySelector('.submit');
+let submitbutton = document.querySelector('.submit');
 submitbutton.addEventListener('click', function(e) {
   e.preventDefault();
-  const form = document.querySelector('.form');
-  const formData = new FormData(form);
-  const dataObject = Object.fromEntries(formData.entries());
-  console.log("i have been clicked");
-  console.log(dataObject); 
-  // Output: { username: "john_doe", email: "john@example.com" }
+  let form = document.querySelector('.form');
+  let formData = new FormData(form);
+  let dataObject = Object.fromEntries(formData.entries());
+  // Output: { username: "john_doe", password: "johnpasswprd" }
+  if(localStorage.getItem("credentials")==null) {
+    dataObject.perms = "admin";
+    dataObject = {1: dataObject};
+    localStorage.setItem("credentials", JSON.stringify(dataObject));
+  }
+  else {
+    dataObject.perms = "user";
+    const num = Object.keys(JSON.parse(localStorage.getItem("credentials"))).length+1;
+    dataObject = {num: dataObject};
+    localStorage.setItem("credentials", JSON.stringify(dataObject));
+  }
 });
+// {1: {username: "admin", password: "admin1234", perms: "admin"}, 2: {username: "user1", password: "123", perms: "user"}}
