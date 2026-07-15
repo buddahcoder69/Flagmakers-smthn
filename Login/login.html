@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Flagmakers - Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../style.css" rel="stylesheet">
+    </head>
+    <body style="background-color: rgb(32, 32, 32);">
+        <div class="topbar">
+            <a href="../index.html"><img class="topbarflag" src="../groupflag.jpg"></a>
+            <button onclick="window.location.href='../Signup/signup.html'" class="signupbutton">Sign up</button>
+            <button onclick="window.location.href='../Login/login.html'" class="loginbutton">Login</button>
+        </div>
+        <div class="loginsignup">
+            <h1>LOG IN</h1>
+            <form>
+                <p><label for="username">Username:</label><input type="text" id="username" name="username" placeholder="Enter your username."></p>
+                <p><label for="password">Password:</label><input type="password" id="password" name="password" placeholder="Enter your password."></p>
+                <input type="submit" value="Log in">
+            </form>
+        </div>
+        <script src="login.js"></script>
+    </body>
+</html>
