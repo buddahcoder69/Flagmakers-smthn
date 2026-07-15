@@ -12,9 +12,10 @@ submitbutton.addEventListener('click', function(e) {
   }
   else {
     dataObject.perms = "user";
-    const num = Object.keys(JSON.parse(localStorage.getItem("credentials"))).length+1;
-    dataObject = {num: dataObject};
-    localStorage.setItem("credentials", JSON.stringify(dataObject));
+    const num = String(Object.keys(JSON.parse(localStorage.getItem("credentials"))).length+1);
+    dataObject = {[num]: dataObject};
+    const combined = {...JSON.parse(localStorage.getItem("credentials")), ...dataObject};
+    localStorage.setItem("credentials", JSON.stringify(combined));
   }
 });
 // {1: {username: "admin", password: "admin1234", perms: "admin"}, 2: {username: "user1", password: "123", perms: "user"}}
