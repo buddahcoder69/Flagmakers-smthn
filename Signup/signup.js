@@ -1,7 +1,9 @@
-let submitbutton = document.querySelector('.submit');
-submitbutton.addEventListener('click', function(e) {
-  e.preventDefault();
-  let form = document.querySelector('.form');
+const form = document.querySelector('.form');
+if (!form) {
+  console.error('Form element not found');
+} else {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
   let formData = new FormData(form);
   let dataObject = Object.fromEntries(formData.entries());
   // Output: { username: "john_doe", password: "johnpasswprd" } this is the user input
@@ -9,40 +11,37 @@ submitbutton.addEventListener('click', function(e) {
   if(!dataObject.username || !dataObject.password) {
     let message = document.getElementById('noempty');
     message.classList.remove('hidden');
-    console.log("fejkahdkfjhe")
   }
   else {
-    if(localStorage.getItem("credentials")==null) {
-    dataObject.perms = "admin";
-    dataObject = {1: dataObject};
-    localStorage.setItem("credentials", JSON.stringify(dataObject));
-    }
-    else {
-      let no = false;
-      const creds = JSON.parse(localStorage.getItem('credentials'));
-      for(const [key, value] of Object.entries(creds)) {
-        // value is the stored user object
-        if(value && value.username === dataObject.username) {
-          let message = document.getElementById('eeee');
-          message.classList.remove('hidden');
-          no = true;
-          console.log('hehsajkhvkjlhsedf')
+    const stored = localStorage.getItem('credentials');
+    if (!stored) {
+      dataObject.perms = 'admin';
+      const toStore = {1: dataObject};
+      localStorage.setItem('credentials', JSON.stringify(toStore));
+      const message = document.getElementById('signupcomplete');
+      if (message) message.classList.remove('hidden');
+    } else {
+      const creds = JSON.parse(stored) || {};
+      let exists = false;
+      for (const value of Object.values(creds)) {
+        if (value && value.username === dataObject.username) {
+          const message = document.getElementById('eeee');
+          if (message) message.classList.remove('hidden');
+          exists = true;
           break;
         }
       }
-      if(!no) {
-        dataObject.perms = "user";
-        const num = String(Object.keys(JSON.parse(localStorage.getItem("credentials"))).length+1);
-        dataObject = {[num]: dataObject};
-        const combined = {...JSON.parse(localStorage.getItem("credentials")), ...dataObject};
-        localStorage.setItem("credentials", JSON.stringify(combined));
+      if (!exists) {
+        dataObject.perms = 'user';
+        const num = String(Object.keys(creds).length + 1);
+        const toAdd = {[num]: dataObject};
+        const combined = {...creds, ...toAdd};
+        localStorage.setItem('credentials', JSON.stringify(combined));
+        const message = document.getElementById('signupcomplete');
+        if (message) message.classList.remove('hidden');
       }
     }
-    if(typeof no === 'undefined' || no===false) {
-      let message = document.getElementById('signupcomplete');
-      message.classList.remove('hidden');
-      console.log('ueuueruyeryeureurueiukszdf');
-    }
   }
-});
+  });
+}
 // {1: {username: "admin", password: "admin1234", perms: "admin"}, 2: {username: "user1", password: "123", perms: "user"}}

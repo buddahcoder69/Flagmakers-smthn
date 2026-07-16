@@ -83,3 +83,6 @@
 .submit {
     pass
 }
+.hidden {
+    display: none;
+}
