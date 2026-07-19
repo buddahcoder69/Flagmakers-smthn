@@ -5,12 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body style="background-color: rgb(32, 32, 32);">
         <div class="topbar">
             <a href="index.html"><img class="topbarflag" src="groupflag.jpg"></a>
-            <button onclick="window.location.href='Signup/signup.html'" class="signupbutton">Sign up</button>
-            <button onclick="window.location.href='Login/login.html'" class="loginbutton">Login</button>
+            <div class="hidden" id="accountbuttons" style="margin-left: auto;">
+                <button onclick="window.location.href='Signup/signup.html'" class="signupbutton">Sign up</button>
+                <button onclick="window.location.href='Login/login.html'" class="loginbutton">Login</button>
+            </div>
         </div>
         <h1 class="title">Welcome to The Flagmakers!</h1>
         <img class="mainflag" src="groupflag.jpg">
@@ -19,5 +22,6 @@
         <div class="coolbutton">
             <a href="./Join/join.html">Join the Flagmakers today!</a>
         </div>
+        <script src="index.js" defer></script>
     </body>
 </html>

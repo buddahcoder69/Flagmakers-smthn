@@ -12,6 +12,8 @@
     top: 0px;
     position: sticky;
     background-color: grey;
+    display: flex;
+    flex-direction: row;
 }
 .topbar::after {
     content: "";
@@ -49,7 +51,6 @@
 .signupbutton,
 .loginbutton {
     display: inline-block;
-    vertical-align: 120%;
     border: 4px;
     border-color: greenyellow;
     background-color: greenyellow;
